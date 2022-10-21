@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import nextI18nConfig from '../next-i18next.config'
 
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -34,7 +35,7 @@ const SecondPage = (_props: InferGetServerSidePropsType<typeof getServerSideProp
 
 export const getServerSideProps: GetServerSideProps<Props> = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale ?? 'en', ['second-page', 'footer']),
+    ...await serverSideTranslations(locale ?? 'en', ['second-page', 'footer'], nextI18nConfig),
   },
 })
 
